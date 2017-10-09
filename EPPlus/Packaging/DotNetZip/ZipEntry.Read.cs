@@ -217,7 +217,7 @@ namespace OfficeOpenXml.Packaging.Ionic.Zip
                         ze._UncompressedSize = BitConverter.ToInt64(block, i);
                         i += 8;
 
-                        ze._LengthOfTrailer += 24;  // bytes including sig, CRC, Comp and Uncomp sizes
+                        ze._LengthOfTrailer = 24;  // bytes including sig, CRC, Comp and Uncomp sizes
                     }
                     else
                     {
@@ -235,7 +235,7 @@ namespace OfficeOpenXml.Packaging.Ionic.Zip
                         ze._CompressedSize = (uint)(block[i++] + block[i++] * 256 + block[i++] * 256 * 256 + block[i++] * 256 * 256 * 256);
                         ze._UncompressedSize = (uint)(block[i++] + block[i++] * 256 + block[i++] * 256 * 256 + block[i++] * 256 * 256 * 256);
 
-                        ze._LengthOfTrailer += 16;  // bytes including sig, CRC, Comp and Uncomp sizes
+                        ze._LengthOfTrailer = 16;  // bytes including sig, CRC, Comp and Uncomp sizes
 
                     }
 

@@ -32,6 +32,20 @@ namespace EPPlusTest
                 Directory.CreateDirectory(@"c:\Temp\bug");
             }
         }
+
+        [TestMethod, Ignore]
+        public void Issue15520_BadSignatureOnExcelPackageConstructoro()
+        {
+            // http://epplus4.rssing.com/chan-7547932/all_p101.html
+            var path = Path.Combine(@"c:\Temp\bug", "IAVF_HCEWG-7569_2017_08_22_DL_3_24_DL.xlsx");
+            var file = new FileInfo(path);
+
+            using (var package = new ExcelPackage(file))
+            {
+                // BadSignatureException was thrown on ctor...   
+            }
+        }
+
         [TestMethod, Ignore]
         public void Issue15052()
         {
